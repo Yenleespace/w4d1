@@ -9,15 +9,18 @@ class PolyTreeNode
 
     def parent=(passed_node) #self is current node 
 
-        if passed_node == nil
-         
-
-        else
-           if !passed_node.children.include?(self)
-            passed_node.children << self
-           end
+      if @parent == nil 
+          if !passed_node.children.include?(self)
+              passed_node.children << self
+          end
            @parent = passed_node
-       end
+      else
+            @parent.children.delete(self)
+            @parent = passed_node
+          if !passed_node.children.include?(self)
+              passed_node.children << self
+          end
+      end
       
     end
 
