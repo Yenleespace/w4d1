@@ -7,12 +7,23 @@ class PolyTreeNode
         @children = []
     end
 
-    def parent=(node)
-        @parent = node
-        if !self.children.include?(node)
-            @children << node.children
+    def parent=(passed_node) #self is current node 
+
+        if passed_node == nil
+         
+
         else
-            
-        end
+           if !passed_node.children.include?(self)
+            passed_node.children << self
+           end
+           @parent = passed_node
+       end
+      
+    end
+
+
+    def add_child(node)
+      self.parent=(node)
+
     end
 end
